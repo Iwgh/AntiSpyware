@@ -13,7 +13,7 @@ namespace RegistryHelper
         // 예 2: @"HKEY_CURRENT_USER\Software\MyTestApp"
         // (앞에 @를 붙여두시면 백슬래시(\)를 그대로 편하게 입력하실 수 있습니다.)
         // =========================================================================
-        private const string REG_PATH = @"컴퓨터\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender";
+        private const string REG_PATH = @"HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender";
 
         // 등록할 16진수 값 (0x1 = 10진수 1로 고정)
         private const uint HEX_VALUE = 0x0; 
