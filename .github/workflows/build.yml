@@ -1,0 +1,27 @@
+name: Build EXE
+
+on:
+  push:
+    branches: [ "main" ] # 본인 저장소의 기본 브랜치 이름이 master라면 master로 변경
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x # 본인 프로젝트가 쓰는 .NET 버전에 맞게 수정 (기본 8.0)
+
+    - name: Build Single EXE
+      run: |
+        dotnet publish -c Release -r win-x64 --self-contained false /p:PublishSingleFile=true -o ./publish
+
+    - name: Upload EXE Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: RegistryProgram-EXE
+        path: ./publish/*.exe
